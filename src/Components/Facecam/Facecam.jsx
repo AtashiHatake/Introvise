@@ -1,7 +1,5 @@
-
-
-// Facecam.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import './facecam.css';
 
 const Facecam = () => {
@@ -12,10 +10,10 @@ const Facecam = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const videoRef = useRef(null);
   const mediaStreamRef = useRef(null);
+  const navigate = useNavigate();
 
   // Simulate fetching questions from backend
   useEffect(() => {
-    // Replace this with actual API call
     const mockFetchQuestions = async () => {
       const sampleQuestions = [
         "Tell me about yourself",
@@ -117,9 +115,13 @@ const Facecam = () => {
           >
             {recording ? 'Stop Recording' : 'Start Recording'}
           </button>
-          <button className="facecam-button btn3">
+          
+          <button 
+            className="facecam-button btn3" 
+            onClick={() => navigate('/dashboard')}
+          >
             Leave Interview
-           </button>
+          </button>
         </div>
 
         <div className="interview">
@@ -142,7 +144,12 @@ const Facecam = () => {
               <div>Loading questions...</div>
             )}
           </div>
-          <button className='btn2'>Submit</button>
+          <button 
+            className='btn2' 
+            onClick={() => navigate('/dashboard')}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>

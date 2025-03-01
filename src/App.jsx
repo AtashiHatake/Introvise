@@ -8,20 +8,20 @@ import Facecam from './Components/Facecam/Facecam';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Landing from './Components/Landing/Landing';
 
-
 const App = () => {
   const location = useLocation();
-  const showNavbar = location.pathname !== '/';
+  // Hide navbar on Landing (/) and Login (/login) pages
+  const showNavbar = !['/', '/login'].includes(location.pathname);
 
   return (
     <div>
       {showNavbar && <ResponsiveAppBar />}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/facecam" element={<Facecam />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/landing" element={<Landing/>} />
       </Routes>
     </div>
   );

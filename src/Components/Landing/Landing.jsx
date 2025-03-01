@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
 import './Landing.css';
+
 
 const TestimonialCarousel = () => {
   const testimonials = [
@@ -70,6 +72,7 @@ const TestimonialCarousel = () => {
 };
 
 function Landing() {
+    
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -89,26 +92,28 @@ function Landing() {
 
     return () => observer.disconnect();
   }, []);
-
+  const navigate = useNavigate();
   return (
-    <div>
-      <nav className="navbar">
-        <div className="logo">Introvise</div>
-        <div className="nav-middle">
-          <a href="/">Home</a>
-          <a href="/interviews">Interviews</a>
-          <a href="/about">About Us</a>
-          <a href="/use-cases">Use Cases</a>
-        </div>
-        <div className="nav-right">
-          <a id="login-l" href="/login">Log in</a>
-          <a href="/signup" className="signup-button">Sign Up Now</a>
-        </div>
-      </nav>  
+        <div>
+          <nav className="navbar">
+            <div className="logo">Introvise</div>
+            <div className="nav-middle">
+              <a href="/">Home</a>
+              <a href="/interviews">Interviews</a>
+              <a href="/about">About Us</a>
+              <a href="/use-cases">Use Cases</a>
+            </div>
+            <button 
+              className="signup-button"
+              onClick={() => navigate('/login')}  
+            >
+              Login
+            </button>
+          </nav>
 
       <div className="App">
         <img className="img-sec" src="PS.svg" alt="PS" />
-        <button className="masked-button">Sign Up</button> 
+        <button className="masked-button" onClick={() => navigate('/login')}   >Login</button> 
         <button className="masked-button2">
           <FaRegPlayCircle className="play-icon" /> View Demo
         </button>
@@ -154,4 +159,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Landing ;

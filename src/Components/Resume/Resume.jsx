@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./resume.css";
 
 const jobRoles = ["Software Developer", "Data Analyst", "AI/ML Engineer", "DevOps Engineer", "Cloud Engineer"];
@@ -32,6 +33,7 @@ const JobSkillsSelector = ({ setJobTitle, setRequiredSkills }) => {
     const [selectedTitle, setSelectedTitle] = useState("");
     const [availableSkills, setAvailableSkills] = useState([]);
     const [selectedSkills, setSelectedSkills] = useState([]);
+    const navigate = useNavigate();
 
     const handleRoleChange = (e) => {
         const role = e.target.value;
@@ -100,7 +102,7 @@ const JobSkillsSelector = ({ setJobTitle, setRequiredSkills }) => {
                     </div>
                 )}
             </div>
-            <button className="btn-r">Submit</button>
+            <button className="btn-r" onClick={() => navigate('/facecam')} >Submit</button>
         </div>
     );
 };
